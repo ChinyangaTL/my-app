@@ -9,3 +9,34 @@ datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
 }
+
+enum FacilityType {
+  PHARMARCY
+  CLINIC
+  HOSPITAL
+}
+
+model Facility {
+  id String @id @default(uuid())
+  identifier String @unique
+  password String
+  name String
+  type FacilityType
+  address String
+  city String
+  district String
+  phoneNumber String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model User {
+  id String @id @default(uuid())
+  firstName String
+  lastName String
+  phoneNumber String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
