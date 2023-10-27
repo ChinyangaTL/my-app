@@ -18,7 +18,7 @@ enum FacilityType {
 
 model Facility {
   id String @id @default(uuid())
-  identifier String @unique
+  identifier String? @unique 
   password String
   name String
   type FacilityType
