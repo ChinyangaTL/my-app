@@ -22,7 +22,9 @@ const facilityTypeMap = {
 };
 
 const createFacilityIdentifier = (district: string, type: string) => {
+  // @ts-ignore
   const districtCode = districtMap[district];
+  // @ts-ignore
   const typeCode = facilityTypeMap[type];
   const randomNumber = Math.floor(Math.random() * 100000)
     .toString()
