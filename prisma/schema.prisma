@@ -25,6 +25,7 @@ model Facility {
   address String
   district String
   phoneNumber String
+  isVerified Boolean @default(false)
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
