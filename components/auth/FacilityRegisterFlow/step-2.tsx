@@ -15,7 +15,7 @@ import useFacilityAuth from '@/app/context/AuthContext/hook';
 import { set } from 'zod';
 
 const FacilityLocation = () => {
-  const { setCurrentStep, setFormState } = useFacilityAuth();
+  const { setCurrentStep, setFormState, formState } = useFacilityAuth();
 
   const [district, setDistrict] = useState('South East');
   const [searchResult, setSearchResult] = useState('Result: none');
@@ -42,15 +42,15 @@ const FacilityLocation = () => {
           <SelectValue placeholder='South East' />
         </SelectTrigger>
         <SelectContent>
-          <SelectItem value='CEN'>Central</SelectItem>
-          <SelectItem value='CHO'>Chobe</SelectItem>
-          <SelectItem value='GHA'>Ghanzi</SelectItem>
-          <SelectItem value='KGA'>Kgalagadi</SelectItem>
-          <SelectItem value='KGT'>Kgatleng</SelectItem>
-          <SelectItem value='KWE'>Kweneng</SelectItem>
-          <SelectItem value='NE'>North East</SelectItem>
-          <SelectItem value='NW'>North West</SelectItem>
-          <SelectItem value='SE'>South East</SelectItem>
+          <SelectItem value='Central'>Central</SelectItem>
+          <SelectItem value='Chobe'>Chobe</SelectItem>
+          <SelectItem value='Ghanzi'>Ghanzi</SelectItem>
+          <SelectItem value='Kgalagadi'>Kgalagadi</SelectItem>
+          <SelectItem value='Kgatleng'>Kgatleng</SelectItem>
+          <SelectItem value='Kweneng'>Kweneng</SelectItem>
+          <SelectItem value='North-East'>North East</SelectItem>
+          <SelectItem value='North-West'>North West</SelectItem>
+          <SelectItem value='South-East'>South East</SelectItem>
           <SelectItem value='SOU'>Southern</SelectItem>
         </SelectContent>
       </Select>
@@ -89,10 +89,11 @@ const FacilityLocation = () => {
 
       <Button
         onClick={() => {
+          console.log(formState);
           setFormState((prev) => ({
             ...prev,
             address: facililityLocationInfo?.formattedAddress,
-            district,
+            district: district,
           }));
           setCurrentStep(2);
         }}
