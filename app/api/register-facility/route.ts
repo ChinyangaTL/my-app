@@ -33,13 +33,13 @@ const createFacilityIdentifier = (district: string, type: string) => {
 };
 
 const mapFacilityType = (type: string) => {
-  if (type === 'Clinic') {
+  if (type === 'CLINIC') {
     return FacilityType.CLINIC;
   }
-  if (type === 'Hospital') {
+  if (type === 'HOSPITAL') {
     return FacilityType.HOSPITAL;
   }
-  if (type === 'Pharmacy') {
+  if (type === 'PHARMARCY') {
     return FacilityType.PHARMARCY;
   }
 
@@ -47,7 +47,7 @@ const mapFacilityType = (type: string) => {
 };
 
 export async function POST(request: Request) {
-  const { name, address, phoneNumber, district, type, city, password } =
+  const { name, address, phoneNumber, district, type, password } =
     await request.json();
 
   const facilityIdentifier = createFacilityIdentifier(district, type);
@@ -61,7 +61,6 @@ export async function POST(request: Request) {
       district,
       type: facilityType,
       identifier: facilityIdentifier,
-      city,
       password,
     },
   });
