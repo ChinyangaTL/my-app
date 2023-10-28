@@ -43,7 +43,7 @@ const formSchema = z.object({
   phoneNumber: z.string().min(1, {
     message: 'Please enter a server image URL',
   }),
-  facilityType: z.nativeEnum(FacilityType),
+  type: z.nativeEnum(FacilityType),
 });
 
 const RegisterCard = () => {
@@ -55,14 +55,14 @@ const RegisterCard = () => {
     defaultValues: {
       name: '',
       phoneNumber: '',
-      facilityType: FacilityType.PHARMARCY,
+      type: FacilityType.PHARMARCY,
     },
   });
 
   const onFormSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
     setCurrentStep(1);
-    // setFormState((prev) => ({ ...values }));
+    setFormState((prev) => ({ ...prev, ...values }));
     // console.log(formState);
   };
 
@@ -108,19 +108,19 @@ const RegisterCard = () => {
 
               <FormField
                 control={form.control}
-                name='facilityType'
+                name='type'
                 render={({ field }) => (
                   <FormItem>
                     <FormLabel htmlFor='facilityType'>Facility Type</FormLabel>
                     <FormControl>
-                      <Select>
+                      <Select onValueChange={field.onChange}>
                         <SelectTrigger className='w-[180px]'>
                           <SelectValue placeholder='Pharmarcy' />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value='pharmarcy'>Pharmarcy</SelectItem>
-                          <SelectItem value='hospital'>Hospital</SelectItem>
-                          <SelectItem value='clinic'>Clinic</SelectItem>
+                          <SelectItem value='PHARMARCY'>Pharmarcy</SelectItem>
+                          <SelectItem value='HOSPITAL'>Hospital</SelectItem>
+                          <SelectItem value='CLINIC'>Clinic</SelectItem>
                         </SelectContent>
                       </Select>
                     </FormControl>
