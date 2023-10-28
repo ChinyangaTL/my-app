@@ -23,7 +23,6 @@ model Facility {
   name String
   type FacilityType
   address String
-  city String
   district String
   phoneNumber String
   
