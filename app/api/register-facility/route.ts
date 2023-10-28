@@ -33,13 +33,13 @@ const createFacilityIdentifier = (district: string, type: string) => {
 };
 
 const mapFacilityType = (type: string) => {
-  if (type === 'Clinic') {
+  if (type === 'CLINIC') {
     return FacilityType.CLINIC;
   }
-  if (type === 'Hospital') {
+  if (type === 'HOSPITAL') {
     return FacilityType.HOSPITAL;
   }
-  if (type === 'Pharmacy') {
+  if (type === 'PHARMARCY') {
     return FacilityType.PHARMARCY;
   }
 
