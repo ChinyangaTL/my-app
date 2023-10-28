@@ -1,6 +1,7 @@
 import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 import { FacilityType } from '@prisma/client';
+const bcrypt = require('bcrypt');
 
 const districtMap = {
   Central: 'CEN',
@@ -46,6 +47,13 @@ const mapFacilityType = (type: string) => {
   return FacilityType.PHARMARCY;
 };
 
+const encryptPassword = async (password: string) => {
+  const salt = await bcrypt.genSaltSync(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
+  return hashedPassword;
+};
+
 export async function POST(request: Request) {
   const { name, address, phoneNumber, district, type, password } =
     await request.json();
@@ -61,7 +69,7 @@ export async function POST(request: Request) {
       district,
       type: facilityType,
       identifier: facilityIdentifier,
-      password,
+      password: await encryptPassword(password),
     },
   });
 
