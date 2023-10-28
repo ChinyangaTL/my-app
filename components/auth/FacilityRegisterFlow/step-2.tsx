@@ -9,10 +9,9 @@ import {
 } from '@/components/ui/select';
 import { Button } from '@/components/ui/button';
 
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useJsApiLoader, Autocomplete } from '@react-google-maps/api';
 import useFacilityAuth from '@/app/context/AuthContext/hook';
-import { set } from 'zod';
 
 const FacilityLocation = () => {
   const { setCurrentStep, setFormState, formState } = useFacilityAuth();
@@ -25,7 +24,7 @@ const FacilityLocation = () => {
     formattedAddress: '';
   } | null>(null);
 
-  function onLoad(autocomplete) {
+  function onLoad(autocomplete: any) {
     setSearchResult(autocomplete);
   }
 
@@ -59,6 +58,7 @@ const FacilityLocation = () => {
         restrictions={{ country: 'bw' }}
         onPlaceChanged={() => {
           if (searchResult != null) {
+            // @ts-ignore
             const place = searchResult.getPlace();
             const name = place.name;
             const status = place.business_status;
@@ -90,7 +90,7 @@ const FacilityLocation = () => {
       <Button
         onClick={() => {
           console.log(formState);
-          setFormState((prev) => ({
+          setFormState((prev: any) => ({
             ...prev,
             address: facililityLocationInfo?.formattedAddress,
             district: district,

@@ -1,5 +1,3 @@
-import React, { useState } from 'react';
-
 import axios from 'axios';
 import { Button } from '@/components/ui/button';
 import useFacilityAuth from '@/app/context/AuthContext/hook';
@@ -33,7 +31,7 @@ const FinalFacilityOnboardingStep = () => {
       <p>{formState?.phoneNumber}</p>
       <p>{formState?.password}</p>
 
-      <Button onClick={() => registerFacility(formState)}>
+      <Button onClick={() => formState && registerFacility(formState)}>
         Complete Registration
       </Button>
     </div>

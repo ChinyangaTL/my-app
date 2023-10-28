@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import { Context, FacilityFormState } from './types';
 
 const FacilityAuthContext = createContext({} as Context);

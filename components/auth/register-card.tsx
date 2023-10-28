@@ -5,18 +5,15 @@ import {
   Card,
   CardContent,
   CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
-  FormMessage,
 } from '@/components/ui/form';
 import {
   Select,
@@ -28,12 +25,9 @@ import {
 import { Button } from '@/components/ui/button';
 
 import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
 import { FacilityType } from '@prisma/client';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useState } from 'react';
-import { AddressAutofill } from '@mapbox/search-js-react';
 import useFacilityAuth from '@/app/context/AuthContext/hook';
 
 const formSchema = z.object({
@@ -62,7 +56,7 @@ const RegisterCard = () => {
   const onFormSubmit = (values: z.infer<typeof formSchema>) => {
     console.log(values);
     setCurrentStep(1);
-    setFormState((prev) => ({ ...prev, ...values }));
+    setFormState((prev: any) => ({ ...prev, ...values }));
     // console.log(formState);
   };
 

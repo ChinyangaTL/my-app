@@ -13,7 +13,7 @@ export interface Context {
     currentStep: number;
   };
   actions: {
-    setFormState: (formState: FacilityFormState) => void;
+    setFormState: (formState: any) => void;
     setCurrentStep: (currentStep: number) => void;
   };
 }

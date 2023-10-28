@@ -8,7 +8,6 @@ import CreatePasswordFacility from '@/components/auth/FacilityRegisterFlow/step-
 import UploadFacilityDoc from '@/components/auth/FacilityRegisterFlow/step-4';
 import FinalFacilityOnboardingStep from '@/components/auth/FacilityRegisterFlow/step-5';
 import RegisterCard from '@/components/auth/register-card';
-import React from 'react';
 
 const RegisterFacilitySignUp = () => {
   const { currentStep } = useFacilityAuth();
