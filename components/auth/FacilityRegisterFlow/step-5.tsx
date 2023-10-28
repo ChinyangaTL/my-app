@@ -4,16 +4,20 @@ import useFacilityAuth from '@/app/context/AuthContext/hook';
 import { FacilityFormState } from '@/app/context/AuthContext/types';
 import { useRouter } from 'next/navigation';
 
-const FinalFacilityOnboardingStep = () => {
-  const { formState } = useFacilityAuth();
+const RegisterFacilityOnboardingStep = () => {
+  const { formState, setFacility, setCurrentStep } = useFacilityAuth();
   const router = useRouter();
 
   const registerFacility = async (formState: FacilityFormState) => {
     console.log(formState);
     try {
-      await axios.post('/api/register-facility', formState);
+      const response = await axios.post('/api/register-facility', formState);
+      const { facility } = response.data;
 
-      router.push('/');
+      // const { facility } = response.data.facility;
+      console.log(facility);
+      setFacility(facility);
+      setCurrentStep(5);
     } catch (error) {
       console.log(error);
     }
@@ -38,4 +42,4 @@ const FinalFacilityOnboardingStep = () => {
   );
 };
 
-export default FinalFacilityOnboardingStep;
+export default RegisterFacilityOnboardingStep;

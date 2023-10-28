@@ -6,7 +6,8 @@ import BasicFacilityInfo from '@/components/auth/FacilityRegisterFlow/step-1';
 import FacilityLocation from '@/components/auth/FacilityRegisterFlow/step-2';
 import CreatePasswordFacility from '@/components/auth/FacilityRegisterFlow/step-3';
 import UploadFacilityDoc from '@/components/auth/FacilityRegisterFlow/step-4';
-import FinalFacilityOnboardingStep from '@/components/auth/FacilityRegisterFlow/step-5';
+import RegisterFacilityOnboardingStep from '@/components/auth/FacilityRegisterFlow/step-5';
+import FinalFacilityOnboardingStep from '@/components/auth/FacilityRegisterFlow/step-6';
 import RegisterCard from '@/components/auth/register-card';
 
 const RegisterFacilitySignUp = () => {
@@ -20,7 +21,9 @@ const RegisterFacilitySignUp = () => {
 
   if (currentStep === 3) return <UploadFacilityDoc />;
 
-  if (currentStep === 4) return <FinalFacilityOnboardingStep />;
+  if (currentStep === 4) return <RegisterFacilityOnboardingStep />;
+
+  if (currentStep === 5) return <FinalFacilityOnboardingStep />;
 
   return (
     <div>

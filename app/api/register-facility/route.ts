@@ -53,7 +53,7 @@ export async function POST(request: Request) {
   const facilityIdentifier = createFacilityIdentifier(district, type);
   const facilityType = mapFacilityType(type);
 
-  const server = await db.facility.create({
+  const facility = await db.facility.create({
     data: {
       name,
       address,
@@ -65,5 +65,5 @@ export async function POST(request: Request) {
     },
   });
 
-  return NextResponse.json({ server });
+  return NextResponse.json({ facility });
 }
