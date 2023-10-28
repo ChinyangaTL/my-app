@@ -1,7 +1,7 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import { Context } from './types';
+import { Context, FacilityFormState } from './types';
 
 const FacilityAuthContext = createContext({} as Context);
 
@@ -10,7 +10,7 @@ type Props = {
 };
 
 const FacilityAuthProvider: React.FC<Props> = ({ children }) => {
-  const [formState, setFormState] = useState({});
+  const [formState, setFormState] = useState<FacilityFormState | null>(null);
   const [currentStep, setCurrentStep] = useState(0);
 
   const state = {
