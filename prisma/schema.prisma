@@ -50,7 +50,6 @@ model DrugItem {
   genericName String
   strengthsAvailable String[]
   quantity Int
-  units String
   price Float
   expiryDate DateTime
   isControlledSubstance Boolean @default(false)
