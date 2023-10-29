@@ -13,6 +13,7 @@ import {
 import { Input } from '@/components/ui/input';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
+import { useRouter } from 'next/navigation';
 
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -51,6 +52,7 @@ const login = async (identifier: string, password: string) => {
 };
 
 const FacilityLogin = () => {
+  const router = useRouter();
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -65,7 +67,11 @@ const FacilityLogin = () => {
         username: data.identifier,
         password: data.password,
       });
-      console.log(response);
+      const { success } = await response.data;
+      if (success) {
+        router.push('/dashboard');
+        router.refresh();
+      }
     } catch (error) {
       console.log(error);
     }
