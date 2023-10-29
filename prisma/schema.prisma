@@ -46,11 +46,11 @@ model DrugItem {
   id String @id @default(uuid())
   facility Facility @relation(fields: [facilityId], references: [id])
   facilityId String
-  brandName String
+  brandName String?
   genericName String
   strengthsAvailable String[]
   quantity Int
-  unit String
+  units String
   price Float
   expiryDate DateTime
   isControlledSubstance Boolean @default(false)
