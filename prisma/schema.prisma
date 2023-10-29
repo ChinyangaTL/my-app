@@ -26,6 +26,7 @@ model Facility {
   district String
   phoneNumber String
   isVerified Boolean @default(false)
+  drugItems DrugItem[]
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -36,6 +37,23 @@ model User {
   firstName String
   lastName String
   phoneNumber String
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model DrugItem {
+  id String @id @default(uuid())
+  facility Facility @relation(fields: [facilityId], references: [id])
+  facilityId String
+  brandName String
+  genericName String
+  strengthsAvailable String[]
+  quantity Int
+  unit String
+  price Float
+  expiryDate DateTime
+  isControlledSubstance Boolean @default(false)
   
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
