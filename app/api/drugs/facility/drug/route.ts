@@ -28,7 +28,7 @@ export async function POST(request: Request) {
   const drugInformation = await db.drugItem.create({
     data: {
       brandName: drugName,
-      genericName: genericDrugName && genericDrugName,
+      genericName: genericDrugName.toLowerCase(),
       price,
       expiryDate: new Date(expiryDate),
       strengthsAvailable,
