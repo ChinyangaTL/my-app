@@ -1,7 +1,10 @@
 import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request, { params }) {
+export async function GET(
+  request: Request,
+  { params }: { params: { facilityId: string } }
+) {
   // TODO, MIGHT NEED TO CHANGE FACILITY ID TO IDENTIFIER
   const drugs = await db.drugItem.findMany({
     where: {

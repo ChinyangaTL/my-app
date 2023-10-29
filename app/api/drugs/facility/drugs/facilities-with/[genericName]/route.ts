@@ -1,7 +1,10 @@
 import { db } from '@/lib/db';
 import { NextResponse } from 'next/server';
 
-export async function GET(request: Request, { params }) {
+export async function GET(
+  request: Request,
+  { params }: { params: { genericName: string } }
+) {
   // TODO: REMOVE PASSWORD FROM SELECTED FIELDS
   const facilities = await db.facility.findMany({
     where: {
