@@ -10,6 +10,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
+  // @ts-ignore
   adapter: PrismaAdapter(prisma) as Adapter | undefined,
   pages: {
     signIn: '/',
@@ -67,6 +68,7 @@ export const authOptions: NextAuthOptions = {
 
           const passwordMatch = await bcrypt.compare(
             credentials.password,
+            // @ts-ignore fixed in db
             user?.password
           );
 
