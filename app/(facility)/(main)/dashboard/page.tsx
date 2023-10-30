@@ -17,7 +17,8 @@ const Dashboard = async () => {
   // console.log(facilitySession);
   const facilityDrugs = await db.drugItem.findMany({
     where: {
-      facilityId: session?.user?.id,
+      // @ts-ignore id will be there
+      facilityId: session?.user?.id!,
     },
   });
 
@@ -50,7 +51,7 @@ const Dashboard = async () => {
   // console.log(currentStep);
   return (
     <>
-      <p>you are logged in as {session?.user.id}</p>
+      {/* <p>you are logged in as {session?.user.id}</p> */}
 
       <DataTable columns={columns} data={facilityDrugs} />
       {/* <Button onClick={logout}>sign out</Button> */}
