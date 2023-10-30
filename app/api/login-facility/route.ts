@@ -45,7 +45,7 @@ export async function POST(request: Request) {
     .sign(getJwtSecretKey());
 
   const response = NextResponse.json(
-    { success: true },
+    { success: true, facility },
     { status: 200, headers: { 'content-type': 'application/json' } }
   );
   response.cookies.set({

@@ -2,8 +2,12 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import './globals.css';
 import { FacilityAuthProvider } from './context/AuthContext/context';
+import { QueryClient } from '@tanstack/react-query';
+import { TanstackProvider } from './utils/TanstackProvider';
 
 const inter = Inter({ subsets: ['latin'] });
+
+const queryClient = new QueryClient();
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -18,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={inter.className}>
-        <FacilityAuthProvider>{children}</FacilityAuthProvider>
+        <TanstackProvider>{children}</TanstackProvider>
       </body>
     </html>
   );
