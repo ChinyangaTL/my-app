@@ -19,4 +19,17 @@ export const columns: ColumnDef<DrugItem>[] = [
     accessorKey: 'quantity',
     header: 'Quantity',
   },
+  {
+    accessorKey: 'price',
+    header: 'Price',
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue('price'));
+      const formatted = new Intl.NumberFormat('en-US', {
+        style: 'currency',
+        currency: 'BWP',
+      }).format(amount);
+
+      return <div className=''>{formatted}</div>;
+    },
+  },
 ];
